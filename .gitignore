@@ -12,6 +12,8 @@ env/
 venv/
 .venv/
 /1.1-first-project/first_project/djvenv
+/1.2-requests-templates/recipes/myvenv
+/1.2-requests-templates/pagination/myvenv
 
 ### Project specific ###
 settings_local.py
