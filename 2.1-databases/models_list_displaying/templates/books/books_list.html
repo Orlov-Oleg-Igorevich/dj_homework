@@ -1,23 +1,34 @@
 {% extends "base.html" %}
 {% load static %}
+{% load books_tags %}
 
 {% block title %}Каталог книг{% endblock %}
 {% block content %}
     <div class="container">
         <div class="header">
-            <h1><a href="/books">Каталог</a></h1>
+            <h1><a href="/books/">Каталог</a></h1>
         </div>
         <div class="row">
+            {% for book in books %}
             <div class="book col-md-4">
-                <h2>Сияние</h2>
-                <p>Автор: Стивен Кинг</p>
-                <p>Дата публикации: 2018-09-10</p>
+                <h2><a href="{% url 'book_show' book.pub_date %}">{{ book.name }}</a></h2>
+                <p>Автор: {{ book.author }}</p>
+                <p>Дата публикации: {{ book.pub_date }}</p>
             </div>
-            <div class="book col-md-4">
-                <h2>1984</h2>
-                <p>Автор: Джордж Оруэл</p>
-                <p>Дата публикации: 2015-03-11</p>
-            </div>
+            {% endfor %}
         </div>
+        {% if page.has_previous %}
+        {% get_date last as last_date %}
+        <a class="button button-primary" href="{% url 'book_show' last_date  %}">< {{ last_date }}</a>
+        {% endif %}
+        {% if page.has_other_pages %}
+        {% get_date page as current_date %}
+        {{ current_date }}
+        {% endif %}
+        {% if page.has_next %}
+        {% get_date next as next_date %}
+        <a class="button button-primary" href="{% url 'book_show' next_date %}">{{ next_date }} ></a>
+        {% endif %}
     </div>
+
 {% endblock %}
