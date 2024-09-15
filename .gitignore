@@ -16,6 +16,8 @@ venv/
 /1.2-requests-templates/pagination/myvenv
 /2.1-databases/work_with_database/myvenv
 /2.1-databases/models_list_displaying/myvenv
+/2.2-databases-2/orm_migrations/myvenv
+/2.2-databases-2/m2m-relations/myvenv
 
 ### Project specific ###
 settings_local.py
