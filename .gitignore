@@ -18,6 +18,7 @@ venv/
 /2.1-databases/models_list_displaying/myvenv
 /2.2-databases-2/orm_migrations/myvenv
 /2.2-databases-2/m2m-relations/myvenv
+/3.1-drf-intro/smart_home/myvenv
 
 ### Project specific ###
 settings_local.py
