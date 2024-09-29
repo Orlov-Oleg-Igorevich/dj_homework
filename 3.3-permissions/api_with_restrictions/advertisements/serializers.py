@@ -1,5 +1,9 @@
+from itertools import count
+
+from django.conf import settings
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from advertisements.models import Advertisement
 
@@ -37,9 +41,13 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         validated_data["creator"] = self.context["request"].user
         return super().create(validated_data)
 
-    def validate(self, data):
+    def validate(self, attrs):
         """Метод для валидации. Вызывается при создании и обновлении."""
 
         # TODO: добавьте требуемую валидацию
+        user = self.context['request'].user
+        count = user.adverts.filter(status="OPEN").count()
+        if count > 10:
+            raise ValidationError('У вас уже есть 10 опубликованных постов.')
 
-        return data
+        return attrs

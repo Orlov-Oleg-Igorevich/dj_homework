@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.db import models
+from django_filters import DateFromToRangeFilter
+from django_filters.rest_framework import FilterSet
 
 
 class AdvertisementStatusChoices(models.TextChoices):
@@ -21,6 +23,7 @@ class Advertisement(models.Model):
     creator = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        related_name='adverts'
     )
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -28,3 +31,4 @@ class Advertisement(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
+
