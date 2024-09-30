@@ -21,6 +21,7 @@ venv/
 /3.1-drf-intro/smart_home/myvenv
 /3.2-crud/stocks_products/myvenv
 /3.3-permissions/api_with_restrictions/myvenv
+/3.4-django-testing/django_testing/myvenv
 
 ### Project specific ###
 settings_local.py
